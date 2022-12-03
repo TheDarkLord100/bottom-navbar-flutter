@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test1/widgets/heading.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../constants/colours.dart';
+import '../widgets/tab_button.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -16,23 +19,23 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color(0xFFFFFFFF),
-        leading: const Icon(
+        leading: Icon(
           Icons.sort,
-          color: Color(0xFF939CA3),
+          color: Colours.appBarIconGrey,
         ),
-        actions: const [
+        actions:  [
           Icon(
             Icons.forum_outlined,
-            color: Color(0xFF939CA3),
+            color: Colours.appBarIconGrey,
           ),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
           Icon(
             Icons.notifications,
-            color: Color(0xFF939CA3),
+            color: Colours.appBarIconGrey,
           ),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
         ],
@@ -49,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: GoogleFonts.inter(
                 fontWeight: FontWeight.bold,
                 fontSize: 12,
-                color: const Color(0xFF6D747A)),
+                color: Colours.textGrey),
           ),
           const SizedBox(
             height: 30,
@@ -64,125 +67,25 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisCount: 2,
               childAspectRatio: 3,
               children: <Widget>[
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 20),
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFF598BED),
-                        ),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: const <Widget>[
-                        Icon(
-                          Icons.book_outlined,
-                          color: Color(0xFF598BED),
-                        ), // ic
-                        SizedBox(
-                          width: 10,
-                        ), // on
-                        Text(
-                          "Programs",
-                          style: TextStyle(color: Color(0xFF598BED)),
-                        ), // text
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 20),
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFF598BED),
-                        ),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: const <Widget>[
-                        Icon(
-                          Icons.help,
-                          color: Color(0xFF598BED),
-                        ), // ic
-                        SizedBox(
-                          width: 10,
-                        ), // on
-                        Text(
-                          "Get Help",
-                          style: TextStyle(color: Color(0xFF598BED)),
-                        ), // text
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 20),
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFF598BED),
-                        ),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: const <Widget>[
-                        Icon(
-                          Icons.import_contacts,
-                          color: Color(0xFF598BED),
-                        ), // ic
-                        SizedBox(
-                          width: 10,
-                        ), // on
-                        Text(
-                          "Learn",
-                          style: TextStyle(color: Color(0xFF598BED)),
-                        ), // text
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 20),
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFF598BED),
-                        ),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: const <Widget>[
-                        Icon(
-                          Icons.insert_chart,
-                          color: Color(0xFF598BED),
-                        ), // ic
-                        SizedBox(
-                          width: 10,
-                        ), // on
-                        Text(
-                          "DD Tracker",
-                          style: TextStyle(color: Color(0xFF598BED)),
-                        ), // text
-                      ],
-                    ),
-                  ),
-                ),
+                TabButton(
+                    text: 'Programs', icon: Icons.book_outlined, action: () {}),
+                TabButton(text: 'Get Help', icon: Icons.help, action: () {}),
+                TabButton(
+                    text: 'Learn', icon: Icons.import_contacts, action: () {}),
+                TabButton(
+                    text: 'DD Tracker',
+                    icon: Icons.insert_chart,
+                    action: () {}),
               ],
             ),
           ),
           const SizedBox(
             height: 20,
           ),
-          Heading(headingText: 'Programs for you',action: () {},),
+          Heading(
+            headingText: 'Programs for you',
+            action: () {},
+          ),
           SizedBox(
             height: 300,
             child: ListView(
@@ -194,9 +97,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                       border: Border.all(color: const Color(0xFFEBEDF0)),
                       color: const Color(0xFFFFFFFF),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
-                          color: Color(0xFF0E443E),
+                          color: Colours.shadow,
                           blurRadius: 4.0,
                         ),
                       ],
@@ -204,27 +107,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Image(
+                    children: [
+                      const Image(
                         image: AssetImage('assets/card 1.png'),
                         fit: BoxFit.fill,
                         height: 140,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 10.0),
+                        padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
                           'LIFESTYLE',
-                          style:
-                              TextStyle(fontSize: 12, color: Color(0xFF5988ED)),
+                          style: TextStyle(
+                              fontSize: 12, color: Colours.primaryBlue),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Flexible(
+                      const Flexible(
                         child: Padding(
                           padding: EdgeInsets.only(left: 10.0, right: 10),
                           child: Text(
@@ -234,15 +137,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.only(left: 10),
                         child: Text(
                           '16 lessons',
                           style:
-                              TextStyle(fontSize: 12, color: Color(0xFF6D747A)),
+                              TextStyle(fontSize: 12, color: Colours.textGrey),
                         ),
                       )
                     ],
@@ -254,9 +157,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                       border: Border.all(color: const Color(0xFFEBEDF0)),
                       color: const Color(0xFFFFFFFF),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
-                          color: Color(0xFF0E443E),
+                          color: Colours.shadow,
                           blurRadius: 4.0,
                         ),
                       ],
@@ -264,27 +167,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Image(
+                    children: [
+                      const Image(
                         image: AssetImage('assets/card 1.png'),
                         fit: BoxFit.fill,
                         height: 140,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 10.0),
+                        padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
                           'WORKING PARENTS',
-                          style:
-                              TextStyle(fontSize: 12, color: Color(0xFF5988ED)),
+                          style: TextStyle(
+                              fontSize: 12, color: Colours.primaryBlue),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Flexible(
+                      const Flexible(
                         child: Padding(
                           padding: EdgeInsets.only(left: 10.0, right: 10),
                           child: Text(
@@ -294,15 +197,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10),
+                       Padding(
+                        padding: const EdgeInsets.only(left: 10),
                         child: Text(
                           '12 lessons',
                           style:
-                              TextStyle(fontSize: 12, color: Color(0xFF6D747A)),
+                              TextStyle(fontSize: 12, color: Colours.textGrey),
                         ),
                       )
                     ],
@@ -314,7 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(
             height: 20,
           ),
-          Heading(headingText: 'Events and experiences',action: () {}),
+          Heading(headingText: 'Events and experiences', action: () {}),
           SizedBox(
             height: 300,
             child: ListView(
@@ -326,9 +229,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                       border: Border.all(color: const Color(0xFFEBEDF0)),
                       color: const Color(0xFFFFFFFF),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
-                          color: Color(0xFF0E443E),
+                          color: Colours.shadow,
                           blurRadius: 4.0,
                         ),
                       ],
@@ -345,12 +248,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10.0),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
                           'BEHAVIOUR',
-                          style:
-                              TextStyle(fontSize: 12, color: Color(0xFF5988ED)),
+                          style: TextStyle(
+                              fontSize: 12, color: Colours.primaryBlue),
                         ),
                       ),
                       const SizedBox(
@@ -368,28 +271,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       // const SizedBox(height: 20,),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               '13 Feb, Sunday',
                               style: TextStyle(
-                                  fontSize: 12, color: Color(0xFF6D747A)),
+                                  fontSize: 12, color: Colours.textGrey),
                             ),
                             OutlinedButton(
                               onPressed: null,
                               style: ButtonStyle(
                                 side: MaterialStateProperty.all(
-                                    const BorderSide(color: Color(0xFF5988ED))),
+                                    BorderSide(color: Colours.primaryBlue)),
                                 shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(30.0))),
                               ),
-                              child: const Text(
+                              child: Text(
                                 "Book",
-                                style: TextStyle(color: Color(0xFF5988ED)),
+                                style: TextStyle(color: Colours.primaryBlue),
                               ),
                             )
                           ],
@@ -404,9 +307,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                       border: Border.all(color: const Color(0xFFEBEDF0)),
                       color: const Color(0xFFFFFFFF),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
-                          color: Color(0xFF0E443E),
+                          color: Colours.shadow,
                           blurRadius: 4.0,
                         ),
                       ],
@@ -423,12 +326,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10.0),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
                           'BEHAVIOUR',
-                          style:
-                          TextStyle(fontSize: 12, color: Color(0xFF5988ED)),
+                          style: TextStyle(
+                              fontSize: 12, color: Colours.primaryBlue),
                         ),
                       ),
                       const SizedBox(
@@ -446,28 +349,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       // const SizedBox(height: 20,),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               '13 Feb, Sunday',
                               style: TextStyle(
-                                  fontSize: 12, color: Color(0xFF6D747A)),
+                                  fontSize: 12, color: Colours.textGrey),
                             ),
                             OutlinedButton(
                               onPressed: null,
                               style: ButtonStyle(
                                 side: MaterialStateProperty.all(
-                                    const BorderSide(color: Color(0xFF5988ED))),
+                                    BorderSide(color: Colours.primaryBlue)),
                                 shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
                                         borderRadius:
-                                        BorderRadius.circular(30.0))),
+                                            BorderRadius.circular(30.0))),
                               ),
-                              child: const Text(
+                              child: Text(
                                 "Book",
-                                style: TextStyle(color: Color(0xFF5988ED)),
+                                style: TextStyle(color: Colours.primaryBlue),
                               ),
                             )
                           ],
@@ -494,9 +397,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                       border: Border.all(color: const Color(0xFFEBEDF0)),
                       color: const Color(0xFFFFFFFF),
-                      boxShadow: const [
+                      boxShadow:  [
                         BoxShadow(
-                          color: Color(0xFF0E443E),
+                          color: Colours.shadow,
                           blurRadius: 4.0,
                         ),
                       ],
@@ -513,12 +416,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10.0),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
                           'BEHAVIOUR',
-                          style:
-                          TextStyle(fontSize: 12, color: Color(0xFF5988ED)),
+                          style: TextStyle(
+                              fontSize: 12, color: Colours.primaryBlue),
                         ),
                       ),
                       const SizedBox(
@@ -534,18 +437,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
+                          children: [
                             Text(
                               '3 min',
                               style: TextStyle(
-                                  fontSize: 12, color: Color(0xFF6D747A)),
+                                  fontSize: 12, color: Colours.textGrey),
                             ),
-                            Icon(Icons.lock_outline)
+                            const Icon(Icons.lock_outline)
                           ],
                         ),
                       )
@@ -558,9 +463,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                       border: Border.all(color: const Color(0xFFEBEDF0)),
                       color: const Color(0xFFFFFFFF),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
-                          color: Color(0xFF0E443E),
+                          color: Colours.shadow,
                           blurRadius: 4.0,
                         ),
                       ],
@@ -577,12 +482,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10.0),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
                           'BEHAVIOUR',
-                          style:
-                          TextStyle(fontSize: 12, color: Color(0xFF5988ED)),
+                          style: TextStyle(
+                              fontSize: 12, color: Colours.primaryBlue),
                         ),
                       ),
                       const SizedBox(
@@ -598,18 +503,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
+                          children:[
                             Text(
                               '1 min',
                               style: TextStyle(
-                                  fontSize: 12, color: Color(0xFF6D747A)),
+                                  fontSize: 12, color: Colours.textGrey),
                             ),
-                            Icon(Icons.lock_outline)
+                            const Icon(Icons.lock_outline)
                           ],
                         ),
                       )
