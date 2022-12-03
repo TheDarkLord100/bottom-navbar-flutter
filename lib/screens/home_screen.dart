@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test1/widgets/heading.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -181,34 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                'Programs for you',
-                style:
-                    GoogleFonts.lora(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    Text(
-                      'View all  ',
-                      style: GoogleFonts.inter(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12,
-                          color: const Color(0xFF6D747A)),
-                    ),
-                    const Icon(
-                      Icons.arrow_right_alt_outlined,
-                      color: Color(0xFF6D747A),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+          Heading(headingText: 'Programs for you',action: () {},),
           SizedBox(
             height: 300,
             child: ListView(
@@ -340,34 +314,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                'Events and experiences',
-                style:
-                    GoogleFonts.lora(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    Text(
-                      'View all  ',
-                      style: GoogleFonts.inter(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12,
-                          color: const Color(0xFF6D747A)),
-                    ),
-                    const Icon(
-                      Icons.arrow_right_alt_outlined,
-                      color: Color(0xFF6D747A),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+          Heading(headingText: 'Events and experiences',action: () {}),
           SizedBox(
             height: 300,
             child: ListView(
@@ -535,34 +482,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                'Lessons for you',
-                style:
-                GoogleFonts.lora(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    Text(
-                      'View all  ',
-                      style: GoogleFonts.inter(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12,
-                          color: const Color(0xFF6D747A)),
-                    ),
-                    const Icon(
-                      Icons.arrow_right_alt_outlined,
-                      color: Color(0xFF6D747A),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+          Heading(headingText: 'Lessons for you', action: () {}),
           SizedBox(
             height: 300,
             child: ListView(
