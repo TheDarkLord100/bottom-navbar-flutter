@@ -6,6 +6,7 @@ import 'screens/nav_bar_screen.dart';
 void main() async {
   HTTPService httpService = HTTPService();
   await httpService.getPrograms();
+  await httpService.getLessons();
   runApp(const MyApp());
 }
 

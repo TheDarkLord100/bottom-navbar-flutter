@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test1/widgets/heading.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../services/lessons.dart';
 import '../services/programs.dart';
 import '../constants/colours.dart';
 import '../widgets/tab_button.dart';
@@ -328,11 +329,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Heading(headingText: 'Lessons for you', action: () {}),
           SizedBox(
-            height: 300,
-            child: ListView(
+            height: 320,
+            child: ListView.builder(
+              itemCount: Lessons.lessonCount,
               scrollDirection: Axis.horizontal,
-              children: [
-                Container(
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
                   width: 240,
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
@@ -360,7 +362,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
-                          'BEHAVIOUR',
+                          Lessons.allLessons[index].category.toUpperCase(),
                           style: TextStyle(
                               fontSize: 12, color: Colours.primaryBlue),
                         ),
@@ -368,12 +370,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Flexible(
+                      Flexible(
                         child: Padding(
-                          padding: EdgeInsets.only(left: 10.0, right: 10),
+                          padding: const EdgeInsets.only(left: 10.0, right: 10),
                           child: Text(
-                            'Understanding of human behaviour',
-                            style: TextStyle(
+                            '${Lessons.allLessons[index].name} \n\n',
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -387,84 +391,22 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '3 min',
+                              '${Lessons.allLessons[index].duration} min',
                               style: TextStyle(
                                   fontSize: 12, color: Colours.textGrey),
                             ),
-                            const Icon(Icons.lock_outline)
+                            (Lessons.allLessons[index].isLocked)
+                                ? const Icon(Icons.lock_outline)
+                                : const SizedBox(
+                                    height: 0,
+                                  ),
                           ],
                         ),
                       )
                     ],
                   ),
-                ),
-                Container(
-                  width: 240,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xFFEBEDF0)),
-                      color: const Color(0xFFFFFFFF),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colours.shadow,
-                          blurRadius: 4.0,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Image(
-                        image: AssetImage('assets/card 2.png'),
-                        fit: BoxFit.fill,
-                        height: 140,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: Text(
-                          'BEHAVIOUR',
-                          style: TextStyle(
-                              fontSize: 12, color: Colours.primaryBlue),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Flexible(
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 10.0, right: 10),
-                          child: Text(
-                            'Understanding of human behaviour',
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '1 min',
-                              style: TextStyle(
-                                  fontSize: 12, color: Colours.textGrey),
-                            ),
-                            const Icon(Icons.lock_outline)
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
+                );
+              },
             ),
           ),
         ],
