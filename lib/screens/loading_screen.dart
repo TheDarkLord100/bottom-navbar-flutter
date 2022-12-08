@@ -17,8 +17,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     await httpService.getLessons();
 
     setState(() {
-      Navigator.pushReplacement(
-          context,
+      Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => const NavBarScreen()));
     });
   }
