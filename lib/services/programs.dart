@@ -10,11 +10,5 @@ class Programs {
   final int lesson;
   final String id;
 
-  Programs(
-      this.created,
-      this.name,
-      this.category,
-      this.lesson,
-      this.id);
-
+  Programs(this.created, this.name, this.category, this.lesson, this.id);
 }
